@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <title>Réservation de velov en ligne à Lyon</title>
+    <meta charset=utf-8>
+    <meta name="description" content="Réservez votre velov en ligne, en quelques clics avec Loc in Lyon!">
+    <meta name="viewport" content="width=device-width">
+    <link rel="icon" sizes="32x32" href="images/icon_velov.ico" />
+    <link rel="shortcut icon" href="images/icon_velov.ico" />
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+        crossorigin="anonymous">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:creator" content="@clement_fermaud">
+    <meta property="og:title" content="Loc in Lyon" />
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content="Loc in Lyon, l'application de réservation de vélov à Lyon." />
+    <meta property="og:url" content="https://loc-in-lyon.clement-fermaud.com" />
+    <meta property="og:image" content="https://loc-in-lyon.clement-fermaud.com/images/img_app.jpg" />
+
+    <meta name="description" content="Loc in Lyon, l'application de réservation de vélov à Lyon." />
+    <meta name="keywords" content="Loc in Lyon, application réservation vélo, vélov, réservation, vélib Lyon" />
+    <meta name="author" content="Clément Fermaud" />
+
+
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Roboto');
+
+    </style>
+</head>
+
+<body>
+
+    <section id="tutorial">
+        <div class="container">
+            <h2>Profitez de la ville !</h2>
+            <div class="fade">
+                <div><img src="images/img_app.jpg" alt="capture écran etape 1">
+                </div>
+                <div>
+                    <h3><span>Étape 1</span></h3>
+                    <p>Les marqueurs indiquent le nombre de <b>stations présentes.</b> Cliquez sur un marqueur pour
+                        effectuer votre réservation.</p>
+                </div>
+            </div>
+            <div class="fade">
+                <div><img src="images/img_lyon.jpg" alt="capture écran etape 2">
+                </div>
+                <div>
+                    <h3><span>Étape 2</span></h3>
+                    <p>Une fois que vous avez choisi votre station vous pourrez voir ses informations (adresse, nombre
+                        de vélos disponibles, réservation possible)</p>
+                </div>
+            </div>
+            <div class="fade">
+                <div><img src="images/img_velov.jpg" alt="capture écran etape 3">
+                </div>
+                <div>
+                    <h3><span>Étape 3</span></h3>
+                    <p>Dans le panneau "Détails de la station" à droite de la carte, cliquer sur <b>"Réserver"</b> afin
+                        d'ouvrir le panneau de réservation.</p>
+                </div>
+            </div>
+            <div class="fade">
+                <div><img src="images/img_lyon_velov.jpg" alt="capture écran etape 4">
+                </div>
+                <div>
+                    <h3><span>Étape 4</span></h3>
+                    <p>Pour éffectuer votre réservation, veuillez signer dans le panneau prévu à cet effet. Cliquez sur
+                        "Effacer" pour recommencer si besoin, puis cliquez sur <b>"Valider"</b> pour finaliser votre
+                        réservation.</p>
+                </div>
+            </div>
+            <div class="fade">
+                <div><img src="images/img_validation.jpg" alt="capture écran etape 5">
+                </div>
+                <div>
+                    <h3><span>Étape 5</span></h3>
+                    <p><b>Votre réservation est valable 20 min</b>. Cliquez sur <i>"Annuler"</i> pour annuler votre
+                        réservation, vous devrez alors recommencer votre réservation.</p>
+                </div>
+            </div>
+        </div>
+        <i class="fas fa-arrow-circle-right"></i>
+        <i class="fas fa-arrow-circle-left"></i>
+        <i class="far fa-pause-circle"></i>
+        <i class="fas fa-play"></i>
+    </section>
+
+    <section id="reserv-map">
+        <div id="map"></div>
+        <aside>
+            <div class="info-station">
+                <h3>Détails de la station</h3>
+                <p class="station-name">Sélectionner une station</p>
+                <p class="station-address"></p>
+                <p class="available-bikes"></p>
+                <button class="reservation-button">Réserver</button>
+            </div>
+            <div class="reservation">
+                <h3>Signer pour réserver</h3>
+                <div>
+                    <label for="lastName" id="name">Nom :</label>
+                    <input type="text" name="lastName" id="lastName" placeholder="Doe">
+                </div>
+                <div>
+                    <label for="firstName" id="name">Prénom :</label>
+                    <input type="text" name="firstName" id="firstName" placeholder="John">
+                </div>
+                <br />
+                <div>
+                    <canvas id="canvas-sign" width="200" height="150"></canvas>
+                </div>
+                <div class="buttons">
+                    <button id="erase">Effacer</button>
+                    <button id="submit">Valider</button>
+                </div>
+            </div>
+        </aside>
+    </section>
+    <footer>
+        <p>
+            <span class="footer-text">Votre réservation en cours :</span>
+            <br />
+            <span class="timer-text"></span>
+            <br />
+            <button class="cancel">Annuler</button>
+        </p>
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="js/map.js"></script>
+    <script src="js/ajax.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDE1lS0HFj-8qWLfNTOXmCVotDRESDjwFU&callback=init"></script>
+    <script src="js/markerclusterer.js"></script>
+    <script src="js/slider.js"></script>
+    <script src="js/canvas.js"></script>
+</body>
+
+
+</html>
